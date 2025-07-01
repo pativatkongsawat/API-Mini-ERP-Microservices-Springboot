@@ -4,7 +4,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-public class DepartmentsModel {
+public class Departments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
@@ -12,7 +12,7 @@ public class DepartmentsModel {
 
     private String department_name;
 
-    public DepartmentsModel(){}
+    public Departments(){}
 
 
     public Integer getDepartId(){return department_id;}
