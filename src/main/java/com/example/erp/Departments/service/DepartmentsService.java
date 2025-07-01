@@ -1,16 +1,13 @@
 package com.example.erp.Departments.service;
 
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.example.erp.Departments.dto.CreateDepartments;
 import com.example.erp.Departments.model.Departments;
 import com.example.erp.Departments.repository.DepartmentsRepository;
-
-
-
 
 @Service
 public class DepartmentsService {
@@ -34,6 +31,10 @@ public class DepartmentsService {
         newData.setDepartName(data.getDepartName());
 
         return departmentsRepository.save(newData);
+    }
+
+    public Optional<Departments> getDepartById(Integer id) {
+        return departmentsRepository.findById(id);
     }
 
 }
