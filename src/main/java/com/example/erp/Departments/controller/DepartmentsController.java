@@ -51,7 +51,7 @@ public class DepartmentsController {
         Optional<Departments> getData = departmentsService.getDepartById(id);
 
         if (getData.isPresent()) {
-            ApiResponse<Departments> res = new ApiResponse<>("Success", "Department found", getData .get());
+            ApiResponse<Departments> res = new ApiResponse<>("Success", "Department found", getData.get());
             return ResponseEntity.ok(res);
         } else {
             ApiResponse<Departments> res = new ApiResponse<>("Error", "Department not found", null);
