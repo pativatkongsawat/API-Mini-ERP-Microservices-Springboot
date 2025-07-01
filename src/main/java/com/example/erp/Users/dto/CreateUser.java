@@ -1,21 +1,9 @@
-package com.example.erp.Users.model;
+package com.example.erp.Users.dto;
 
-import java.time.LocalDateTime;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "users")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
+public class CreateUser {
+    
     private String user_id;
 
     private String username;
@@ -32,20 +20,9 @@ public class User {
 
     private Integer role_id;
 
-    private LocalDateTime hire_date;
-
     private Double salary;
 
-    private boolean is_active;
-
-    private LocalDateTime created_at;
-
-    private LocalDateTime updated_at;
-
-    public User() {}
-
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+    public CreateUser(){}
 
     public String getUserId() { return user_id; }
     public void setUserId(String user_id) { this.user_id = user_id; }
@@ -71,18 +48,6 @@ public class User {
     public Integer getRoleId() { return role_id; }
     public void setRoleId(Integer role_id) { this.role_id = role_id; }
 
-    public LocalDateTime getHireDate() { return hire_date; }
-    public void setHireDate(LocalDateTime hire_date) { this.hire_date = hire_date; }
-
     public Double getSalary() { return salary; }
     public void setSalary(Double salary) { this.salary = salary; }
-
-    public boolean isIsActive() { return is_active; }
-    public void setIsActive(boolean is_active) { this.is_active = is_active; }
-
-    public LocalDateTime getCreatedAt() { return created_at; }
-    public void setCreatedAt(LocalDateTime created_at) { this.created_at = created_at; }
-
-    public LocalDateTime getUpdatedAt() { return updated_at; }
-    public void setUpdatedAt(LocalDateTime updated_at) { this.updated_at = updated_at; }
 }
