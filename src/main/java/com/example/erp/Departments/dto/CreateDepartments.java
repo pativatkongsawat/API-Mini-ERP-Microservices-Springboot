@@ -1,7 +1,10 @@
 package com.example.erp.Departments.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class CreateDepartments {
 
+    @NotBlank(message = "Department name is required")
     private String department_name;
 
     public CreateDepartments(){}
