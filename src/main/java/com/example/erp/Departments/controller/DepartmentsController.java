@@ -2,6 +2,7 @@ package com.example.erp.Departments.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,8 +37,10 @@ public class DepartmentsController {
     @PostMapping("/")
     public ResponseEntity<ApiResponse<Departments>> createDeart(@Valid @RequestBody CreateDepartments data) {
         Departments created = departmentsService.CreateNewDepartment(data);
-        ApiResponse<Departments> response = new ApiResponse<>("success", "Department created successfully", created);
-        return ResponseEntity.ok(response);
+        ApiResponse<Departments> response = new ApiResponse<>("success",
+                                                "Department created successfully", 
+                                                created);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response); 
     }
 
 }
