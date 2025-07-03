@@ -64,5 +64,20 @@ public class UserController {
 
 
     }
+    public ResponseEntity<ApiResponse<User>> UpdateUser(@RequestBody CreateUser data , @PathVariable Integer id){
+
+        
+        Optional<User> updatedUser = userService.UpdateUser(data, id);
+        if (updatedUser.isEmpty()) {
+            ApiResponse<User> res = new ApiResponse<>("Error", "User Not Found", null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(res);
+        }
+        ApiResponse<User> res = new ApiResponse<>("Success", "User Updated", updatedUser.get());
+        
+        return ResponseEntity.status(HttpStatus.OK).body(res);
+
+        
+
+    }
 
 }
