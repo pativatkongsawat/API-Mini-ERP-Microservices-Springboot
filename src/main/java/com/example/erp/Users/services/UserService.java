@@ -1,5 +1,6 @@
 package com.example.erp.Users.services;
 
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -11,15 +12,13 @@ import com.example.erp.Users.dto.CreateUser;
 import com.example.erp.Users.model.User;
 import com.example.erp.Users.repository.UserRepository;
 
-
-
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository , PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
@@ -56,6 +55,60 @@ public class UserService {
         data.setUpdatedAt(now);
 
         return userRepository.save(data);
+
+    }
+
+    public Optional<User> UpdateUser(CreateUser user, Integer id) {
+
+        boolean isAllFieldNullOrBlank = (user.getEmail() == null || user.getEmail().isBlank()) &&
+                (user.getFname() == null || user.getFname().isBlank()) &&
+                (user.getLname() == null || user.getLname().isBlank()) &&
+                (user.getPassword() == null || user.getPassword().isBlank()) &&
+                (user.getUsername() == null || user.getUsername().isBlank()) &&
+                user.getRoleId() == null &&
+                user.getDepartmentId() == null &&
+                user.getSalary() == null;
+
+        if (isAllFieldNullOrBlank) {
+            throw new IllegalArgumentException("Add at least 1 field to update");
+        }
+
+        LocalDateTime now = LocalDateTime.now();
+
+        return userRepository.findById(id).map(data ->{
+
+            if (user.getEmail() != null && !user.getEmail().isBlank()) {
+                data.setEmail(user.getEmail());
+            }
+            if (user.getFname() != null && !user.getFname().isBlank()) {
+                data.setFname(user.getFname());
+            }
+            if (user.getLname() != null && !user.getLname().isBlank()) {
+                data.setLname(user.getLname());
+            }
+            if (user.getPassword() != null && !user.getPassword().isBlank()) {
+                String hashpassword = passwordEncoder.encode(user.getPassword());
+                data.setPassword(hashpassword);
+            }
+            if (user.getUsername() != null && !user.getUsername().isBlank()) {
+                data.setUsername(user.getUsername());
+            }
+            if (user.getRoleId() != null) {
+                data.setRoleId(user.getRoleId());
+            }
+            if (user.getDepartmentId() != null) {
+                data.setDepartmentId(user.getDepartmentId());
+            }
+            if (user.getSalary() != null) {
+                data.setSalary(user.getSalary());
+            }
+
+            data.setUpdatedAt(now);
+
+            return userRepository.save(data);
+
+
+        });
 
     }
 
