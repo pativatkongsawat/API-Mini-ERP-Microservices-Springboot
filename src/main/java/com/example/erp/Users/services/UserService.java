@@ -1,6 +1,6 @@
 package com.example.erp.Users.services;
 
-
+import java.util.NoSuchElementException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -32,13 +32,11 @@ public class UserService {
     }
 
     public User CreateNewUser(CreateUser user) {
-
         LocalDateTime now = LocalDateTime.now();
-
-        User data = new User();
 
         String hashpassword = passwordEncoder.encode(user.getPassword());
 
+        User data = new User();
         data.setUserId(user.getUserId());
         data.setUsername(user.getUsername());
         data.setEmail(user.getEmail());
@@ -55,11 +53,9 @@ public class UserService {
         data.setUpdatedAt(now);
 
         return userRepository.save(data);
-
     }
 
     public Optional<User> UpdateUser(CreateUser user, Integer id) {
-
         boolean isAllFieldNullOrBlank = (user.getEmail() == null || user.getEmail().isBlank()) &&
                 (user.getFname() == null || user.getFname().isBlank()) &&
                 (user.getLname() == null || user.getLname().isBlank()) &&
@@ -73,10 +69,7 @@ public class UserService {
             throw new IllegalArgumentException("Add at least 1 field to update");
         }
 
-        LocalDateTime now = LocalDateTime.now();
-
-        return userRepository.findById(id).map(data ->{
-
+        return userRepository.findById(id).map(data -> {
             if (user.getEmail() != null && !user.getEmail().isBlank()) {
                 data.setEmail(user.getEmail());
             }
@@ -103,13 +96,29 @@ public class UserService {
                 data.setSalary(user.getSalary());
             }
 
-            data.setUpdatedAt(now);
-
+            data.setUpdatedAt(LocalDateTime.now());
             return userRepository.save(data);
+        }).or(()-> {
 
+            throw new NoSuchElementException("User not found with id: " + id);
 
         });
-
     }
 
+    public boolean DeleteUser(Integer id) {
+        return userRepository.findById(id).map(user -> {
+            userRepository.delete(user);
+            return true;
+        }).orElseThrow(() -> new NoSuchElementException("User not found with id: " + id));
+    }
+
+    public Optional<User> SoftDeleteUser(Integer id) {
+        return userRepository.findById(id).map(data -> {
+            data.setIsActive(false);
+            data.setUpdatedAt(LocalDateTime.now());
+            return userRepository.save(data);
+        }).or(() -> {
+            throw new NoSuchElementException("User not found with id: " + id);
+        });
+    }
 }
