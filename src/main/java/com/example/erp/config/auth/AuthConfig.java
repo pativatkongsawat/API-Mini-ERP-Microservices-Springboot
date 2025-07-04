@@ -24,9 +24,10 @@ public class AuthConfig {
     public String generateToken(User user) {
         return Jwts.builder()
                 .setSubject(user.getEmail()) 
-                .claim("id", user.getId()) 
+                .claim("user id", user.getUserId()) 
                 .claim("email", user.getEmail())
                 .claim("roleId", user.getRoleId())
+                .claim("department", user.getDepartmentId())
                 .claim("firstname", user.getFname())
                 .claim("lastname", user.getLname())
                 .setIssuedAt(new Date())
