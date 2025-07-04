@@ -85,6 +85,7 @@ public class UserController {
 
     }
 
+    @PutMapping("/s")
     public ResponseEntity<ApiResponse<User>> SoftDeleteUser(@RequestParam Integer id) {
 
         Optional<User> user = userService.SoftDeleteUser(id);
