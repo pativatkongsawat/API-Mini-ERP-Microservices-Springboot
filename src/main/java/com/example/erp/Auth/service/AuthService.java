@@ -18,7 +18,7 @@ public class AuthService {
     private final AuthConfig jwtutils;
     private final PasswordEncoder passwordEncoder;
 
-    public AuthService(AuthRepository authRepository , AuthConfig jwtutils , PasswordEncoder passwordEncoder) {
+    public AuthService(AuthRepository authRepository, AuthConfig jwtutils, PasswordEncoder passwordEncoder) {
 
         this.authRepository = authRepository;
         this.jwtutils = jwtutils;
@@ -26,15 +26,15 @@ public class AuthService {
 
     }
 
-    public AuthResponse Login(AuthRequest req){
+    public AuthResponse Login(AuthRequest req) {
 
-        User user = authRepository.findbyEmail(req.getEmail()).orElseThrow(() -> 
+        User user = authRepository.findbyEmail(req.getEmail()).orElseThrow(() ->
 
-            new NoSuchElementException("Email Not Found")
+        new NoSuchElementException("Email Not Found")
 
         );
 
-        if(!user.getPassword().equals(req.getPassword())){
+        if (!user.getPassword().equals(req.getPassword())) {
 
             throw new NoSuchElementException("Email or Password Invalid");
 
@@ -52,19 +52,50 @@ public class AuthService {
 
         res.setFirstName(user.getFname());
         res.setLastName(user.getLname());
-        
 
         return res;
 
     }
 
-    public User Register(CreateUser data){
+    public User Register(CreateUser data) {
+
+        boolean allFildHaveData = data.getEmail() != null && !data.getEmail().isBlank() &&
+                data.getFname() != null && !data.getFname().isBlank() &&
+                data.getLname() != null && !data.getLname().isBlank() &&
+                data.getPassword() != null && !data.getPassword().isBlank() &&
+                data.getDepartmentId() != null && data.getRoleId() != null &&
+                data.getSalary() != null && data.getUserId() != null &&
+                !data.getUserId().isBlank() && data.getUsername() != null &&
+                !data.getUsername().isBlank();
+
+
+
+        if(!allFildHaveData){
+            throw new NoSuchElementException("All fields must have data");
+        }   
+        
+        String hashpassword = passwordEncoder.encode(data.getPassword());
         
         User user = new User();
 
         LocalDateTime now = LocalDateTime.now();
 
+        user.setUserId(data.getUserId());
+        user.setUsername(data.getUsername());
+        user.setEmail(data.getEmail());
+        user.setPassword(hashpassword);
+        user.setFname(data.getFname());
+        user.setLname(data.getLname());
+        user.setDepartmentId(data.getDepartmentId());
+        user.setRoleId(data.getRoleId());
+        user.setSalary(data.getSalary());
+        user.setIsActive(true);
 
+
+
+        user.setHireDate(now);
+        user.setCreatedAt(now);
+        user.setUpdatedAt(now);
 
         return user;
     }

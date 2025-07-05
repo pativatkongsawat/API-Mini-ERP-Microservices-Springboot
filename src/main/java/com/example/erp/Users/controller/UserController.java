@@ -43,12 +43,12 @@ public class UserController {
 
         if (data.isPresent()) {
 
-            ApiResponse<User> res = new ApiResponse<>("Succes", "User Found", data.get());
+            ApiResponse<User> res = new ApiResponse<>("302", "User Found", data.get());
 
             return ResponseEntity.status(HttpStatus.FOUND).body(res);
 
         } else {
-            ApiResponse<User> res = new ApiResponse<>("Error", "User Not Found", data.get());
+            ApiResponse<User> res = new ApiResponse<>("404", "User Not Found", data.get());
 
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(res);
         }
@@ -60,7 +60,7 @@ public class UserController {
 
         User newUser = userService.CreateNewUser(data);
 
-        ApiResponse<User> res = new ApiResponse<>("Succes", "Create User", newUser);
+        ApiResponse<User> res = new ApiResponse<>("201", "Create User", newUser);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(res);
 
@@ -71,7 +71,7 @@ public class UserController {
 
         Optional<User> updatedUser = userService.UpdateUser(data, id);
 
-        ApiResponse<User> res = new ApiResponse<>("Success", "User Updated", updatedUser.get());
+        ApiResponse<User> res = new ApiResponse<>("200", "User Updated", updatedUser.get());
 
         return ResponseEntity.status(HttpStatus.OK).body(res);
 
@@ -90,7 +90,7 @@ public class UserController {
 
         Optional<User> user = userService.SoftDeleteUser(id);
 
-        ApiResponse<User> res = new ApiResponse<>("Succes 200", "Soft Delete ", user.get());
+        ApiResponse<User> res = new ApiResponse<>("200", "Soft Delete ", user.get());
 
         return ResponseEntity.status(HttpStatus.OK).body(res);
 
