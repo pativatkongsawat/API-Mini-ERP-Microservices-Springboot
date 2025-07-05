@@ -1,6 +1,7 @@
 package com.example.erp.Products.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,12 @@ public class ProductService {
 
     public List<Product> GetAll(){
         return productRepository.findAll();
+    }
+
+    public Optional<Product> GetById(Integer id){
+
+        return productRepository.findById(id);
+
     }
     
 }
