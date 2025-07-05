@@ -2,7 +2,7 @@ package com.example.erp.Auth.model;
 
 public class AuthResponse {
 
-    private String status;
+   
 
     private String token;
 
@@ -20,8 +20,7 @@ public class AuthResponse {
 
     public AuthResponse(){};
 
-    public String getStatus(){return status;}
-    public void setStatus(String status){this.status = status;}
+  
 
     public String getToken(){return token;}
     public void setToken(String token){this.token = token;}

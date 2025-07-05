@@ -32,6 +32,20 @@ public class UserService {
     }
 
     public User CreateNewUser(CreateUser user) {
+        
+        boolean allFieldsHaveData = user.getEmail() != null && !user.getEmail().isBlank() &&
+                user.getFname() != null && !user.getFname().isBlank() &&
+                user.getLname() != null && !user.getLname().isBlank() &&
+                user.getPassword() != null && !user.getPassword().isBlank() &&
+                user.getUsername() != null && !user.getUsername().isBlank() &&
+                user.getRoleId() != null &&
+                user.getDepartmentId() != null &&
+                user.getSalary() != null;
+
+        if (!allFieldsHaveData) {
+            throw new IllegalArgumentException("All fields must have data");
+        }
+
         LocalDateTime now = LocalDateTime.now();
 
         String hashpassword = passwordEncoder.encode(user.getPassword());
@@ -98,7 +112,7 @@ public class UserService {
 
             data.setUpdatedAt(LocalDateTime.now());
             return userRepository.save(data);
-        }).or(()-> {
+        }).or(() -> {
 
             throw new NoSuchElementException("User not found with id: " + id);
 
