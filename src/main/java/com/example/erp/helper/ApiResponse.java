@@ -1,7 +1,7 @@
 package com.example.erp.helper;
 
 public class ApiResponse<T> {
-     private String status;
+    private String status;
     private String message;
     private T data;
 

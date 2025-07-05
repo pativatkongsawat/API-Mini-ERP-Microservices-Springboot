@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.NoSuchElementException;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import com.example.erp.Auth.model.AuthRequest;
 import com.example.erp.Auth.model.AuthResponse;
@@ -12,6 +13,7 @@ import com.example.erp.Users.dto.CreateUser;
 import com.example.erp.Users.model.User;
 import com.example.erp.config.auth.AuthConfig;
 
+@Service
 public class AuthService {
 
     private final AuthRepository authRepository;
