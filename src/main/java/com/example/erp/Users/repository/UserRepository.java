@@ -14,13 +14,16 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     Optional<User> findByEmail(String email);
 
-    Optional<User> findByFirstNameAndLastName(String first_name, String last_name);
+    Optional<User> findByFirstNameAndLastName(String firstName, String lastName);
 
     List<User> findByIsActive(boolean isActive);
 
     Page<User> findAll(Pageable pageable);
     
-    Page<User> findByFirstNameAndLastName(String first_name, String last_name, Pageable pageable);
+    Page<User> findByFirstNameAndLastNameAnddepartmentId(
+        String firstName, String lastName,Integer departmentId, Pageable pageable);
+
+    
 }
 
 

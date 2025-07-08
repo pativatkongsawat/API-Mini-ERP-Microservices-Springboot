@@ -31,7 +31,9 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    private Integer department_id;
+
+    @Column(name = "department_id")
+    private Integer departmentId;
 
     private Integer role_id;
 
@@ -105,11 +107,11 @@ public class User {
     }
 
     public Integer getDepartmentId() {
-        return department_id;
+        return departmentId;
     }
 
-    public void setDepartmentId(Integer department_id) {
-        this.department_id = department_id;
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
     }
 
     public Integer getRoleId() {

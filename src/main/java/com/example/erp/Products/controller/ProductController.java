@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.erp.Products.dto.CreateProduct;
 import com.example.erp.Products.model.Product;
 import com.example.erp.Products.services.ProductService;
 import com.example.erp.helper.ApiResponse;
+
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
 @RequestMapping("/api/product")
@@ -40,6 +43,20 @@ public class ProductController {
             ApiResponse<Product> res = new ApiResponse<>("404", "Product Not Found", product.get());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(res);
         }
+
+    }
+
+    public ResponseEntity<ApiResponse<Product>> CreateProduct(@RequestBody CreateProduct data){
+
+        Product product = productService.CreateProduct(data);
+
+        ApiResponse<Product> res = new ApiResponse<>("201" , "Success" , product);
+
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(res);
+
+
+
 
     }
 
