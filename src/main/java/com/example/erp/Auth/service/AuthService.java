@@ -30,7 +30,7 @@ public class AuthService {
 
     public AuthResponse Login(AuthRequest req) {
 
-        User user = authRepository.findbyEmail(req.getEmail()).orElseThrow(() ->
+        User user = authRepository.findByEmail(req.getEmail()).orElseThrow(() ->
 
         new NoSuchElementException("Email Not Found")
 
