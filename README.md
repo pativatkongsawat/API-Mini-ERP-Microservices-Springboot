@@ -7,7 +7,7 @@ A backend system for managing ERP, built with Java and SpringBoot
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="image/sp.png" width="90" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="image/pg.png" width="100" />
+  <img src="image/pg.png" width="160" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="image/docker.png" width="100" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
