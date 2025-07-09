@@ -48,7 +48,7 @@ public class User {
     @Column(name = "salary")
     private Double salary;
 
-    @Column(name = "is_active")
+    @Column(name = "is_active") 
     private boolean isActive;
 
     @Column(name = "created_at")
@@ -64,7 +64,7 @@ public class User {
     public Integer getId() {
         return id;
     }
-
+ 
     public void setId(Integer id) {
         this.id = id;
     }

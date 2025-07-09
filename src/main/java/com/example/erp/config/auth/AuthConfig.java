@@ -28,10 +28,10 @@ public class AuthConfig {
                 .claim("email", user.getEmail())
                 .claim("roleId", user.getRoleId())
                 .claim("department", user.getDepartmentId())
-                .claim("firstname", user.getFname())
-                .claim("lastname", user.getLname())
+                .claim("firstname", user.getFirstName())
+                .claim("lastname", user.getLastName())
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 86400000)) // 1 วัน
+                .setExpiration(new Date(System.currentTimeMillis() + 86400000)) 
                 .signWith(getSignKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
