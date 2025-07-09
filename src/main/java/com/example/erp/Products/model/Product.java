@@ -24,6 +24,8 @@ public class Product {
 
     private Double price;
 
+    private Integer category_id;
+
     private LocalDateTime created_at;
 
 

@@ -1,6 +1,7 @@
 package com.example.erp.Products.services;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -83,12 +84,12 @@ public class ProductService {
             if (data.getPrice() != null && data.getPrice() > 0) {
                 product.setPrice(data.getPrice());
             }
-            if (data.getStock() != null  && data.getStock() > 0) {
+            if (data.getStock() != null && data.getStock() > 0) {
                 product.setStock(data.getStock());
             }
             return productRepository.save(product);
 
-        }).or(() ->{
+        }).or(() -> {
 
             throw new NoSuchElementException("Product ID Not Found");
 
@@ -96,12 +97,45 @@ public class ProductService {
 
     }
 
-    public boolean DeleteProduct(Integer id ){
+    public boolean DeleteProduct(Integer id) {
         return productRepository.findById(id).map(data -> {
             productRepository.delete(data);
             return true;
 
-        }).orElseThrow(()-> new NoSuchElementException("Product ID Not Found"));
+        }).orElseThrow(() -> new NoSuchElementException("Product ID Not Found"));
     }
 
+    public List<Product> CreateProductArray(List<CreateProduct> data) {
+
+        LocalDateTime now = LocalDateTime.now();
+
+        List<Product> products = new ArrayList<>();
+
+        for (CreateProduct newProduct : data) {
+
+            boolean productNotNullAndNotBlank = newProduct.getProductCode() != null
+                    && !newProduct.getProductCode().isBlank() &&
+                    newProduct.getProductName() != null && !newProduct.getProductName().isBlank() &&
+                    newProduct.getPrice() != null && newProduct.getStock() != null;
+
+            if (!productNotNullAndNotBlank) {
+
+                throw new NoSuchElementException("All fields must have data");
+
+            }
+            Product product = new Product();
+            product.setProductCode(newProduct.getProductCode());
+            product.setProductName(newProduct.getProductName());
+            product.setStock(newProduct.getStock());
+            product.setPrice(newProduct.getPrice());
+
+            product.setCreateAt(now);
+
+            products.add(product);
+
+            
+        }
+        return productRepository.saveAll(products);
+
+    }
 }
