@@ -50,8 +50,8 @@ public class AuthService {
         res.setDepartmentId(user.getDepartmentId());
         res.setRoleID(user.getRoleId());
 
-        res.setFirstName(user.getFname());
-        res.setLastName(user.getLname());
+        res.setFirstName(user.getFirstName());
+        res.setLastName(user.getLastName());
 
         return res;
 
@@ -82,12 +82,12 @@ public class AuthService {
         user.setUsername(data.getUsername());
         user.setEmail(data.getEmail());
         user.setPassword(hashpassword);
-        user.setFname(data.getFname());
-        user.setLname(data.getLname());
+        user.setFirstName(data.getFname());
+        user.setLastName(data.getLname());
         user.setDepartmentId(data.getDepartmentId());
         user.setRoleId(data.getRoleId());
         user.setSalary(data.getSalary());
-        user.setIsActive(true);
+        user.setActive(true);
 
         user.setHireDate(now);
         user.setCreatedAt(now);
