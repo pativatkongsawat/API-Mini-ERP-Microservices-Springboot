@@ -14,7 +14,7 @@ public class Log {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long log_id;
+    private Integer log_id;
 
     private Integer user_id;
     
@@ -27,5 +27,13 @@ public class Log {
     private String user_agent;
 
     private LocalDateTime created_at;
+
+    public Log(){}
+
+    public Integer getLogID(){return log_id;}
+    public void setLogID(Integer log_id){this.log_id = log_id;}
+
+    public Integer getUserID(){return user_id;}
+    public void setUserID(Integer user_id){this.user_id = user_id;}
 
 }
