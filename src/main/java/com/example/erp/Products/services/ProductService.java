@@ -35,7 +35,7 @@ public class ProductService {
 
         boolean productNotNullAndNotBlank = data.getProductCode() != null && !data.getProductCode().isBlank() &&
                 data.getProductName() != null && !data.getProductName().isBlank() &&
-                data.getPrice() != null && data.getStock() != null;
+                data.getPrice() != null && data.getStock() != null && data.getCategoryID() != null;
 
         if (!productNotNullAndNotBlank) {
 
@@ -51,6 +51,7 @@ public class ProductService {
         product.setProductName(data.getProductName());
         product.setPrice(data.getPrice());
         product.setStock(data.getStock());
+        product.setCategoryID(data.getCategoryID());
 
         product.setCreateAt(now);
 
@@ -65,7 +66,7 @@ public class ProductService {
                         data.getPrice() == null
                 || data.getPrice() <= 0
                         && data.getStock() == null
-                || data.getStock() <= 0;
+                || data.getStock() <= 0 && data.getCategoryID() == null || data.getCategoryID() <= 0;
 
         if (productNotNullAndNotBlank) {
 
@@ -86,6 +87,9 @@ public class ProductService {
             }
             if (data.getStock() != null && data.getStock() > 0) {
                 product.setStock(data.getStock());
+            }
+            if (data.getCategoryID() != null && data.getCategoryID() > 0) {
+                product.setCategoryID(data.getCategoryID());
             }
             return productRepository.save(product);
 
@@ -116,7 +120,8 @@ public class ProductService {
             boolean productNotNullAndNotBlank = newProduct.getProductCode() != null
                     && !newProduct.getProductCode().isBlank() &&
                     newProduct.getProductName() != null && !newProduct.getProductName().isBlank() &&
-                    newProduct.getPrice() != null && newProduct.getStock() != null;
+                    newProduct.getPrice() != null && newProduct.getStock() != null
+                    && newProduct.getCategoryID() != null;
 
             if (!productNotNullAndNotBlank) {
 
@@ -128,12 +133,12 @@ public class ProductService {
             product.setProductName(newProduct.getProductName());
             product.setStock(newProduct.getStock());
             product.setPrice(newProduct.getPrice());
+            product.setCategoryID(newProduct.getCategoryID());
 
             product.setCreateAt(now);
 
             products.add(product);
 
-            
         }
         return productRepository.saveAll(products);
 

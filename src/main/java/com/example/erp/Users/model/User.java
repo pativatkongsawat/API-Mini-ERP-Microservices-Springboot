@@ -15,14 +15,19 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
-    private String user_id;
+    @Column(name = "user_id")
+    private String userId;
 
+    @Column(name = "username")
     private String username;
 
+    @Column(name = "email")
     private String email;
 
+    @Column(name = "password")
     private String password;
 
     @Column(name = "first_name")
@@ -31,25 +36,31 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-
     @Column(name = "department_id")
     private Integer departmentId;
 
-    private Integer role_id;
+    @Column(name = "role_id")
+    private Integer roleId;
 
-    private LocalDateTime hire_date;
+    @Column(name = "hire_date")
+    private LocalDateTime hireDate;
 
+    @Column(name = "salary")
     private Double salary;
 
-    private boolean is_active;
+    @Column(name = "is_active")
+    private boolean isActive;
 
-    private LocalDateTime created_at;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 
-    private LocalDateTime updated_at;
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
     public User() {
     }
 
+   
     public Integer getId() {
         return id;
     }
@@ -59,11 +70,11 @@ public class User {
     }
 
     public String getUserId() {
-        return user_id;
+        return userId;
     }
 
-    public void setUserId(String user_id) {
-        this.user_id = user_id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -90,19 +101,19 @@ public class User {
         this.password = password;
     }
 
-    public String getFname() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFname(String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName =  firstName;
     }
 
-    public String getLname() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLname(String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -115,19 +126,19 @@ public class User {
     }
 
     public Integer getRoleId() {
-        return role_id;
+        return roleId;
     }
 
-    public void setRoleId(Integer role_id) {
-        this.role_id = role_id;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
     public LocalDateTime getHireDate() {
-        return hire_date;
+        return hireDate;
     }
 
-    public void setHireDate(LocalDateTime hire_date) {
-        this.hire_date = hire_date;
+    public void setHireDate(LocalDateTime hireDate) {
+        this.hireDate = hireDate;
     }
 
     public Double getSalary() {
@@ -138,27 +149,27 @@ public class User {
         this.salary = salary;
     }
 
-    public boolean isIsActive() {
-        return is_active;
+    public boolean isActive() {
+        return isActive;
     }
 
-    public void setIsActive(boolean is_active) {
-        this.is_active = is_active;
+    public void setActive(boolean isActive) {
+        this.isActive = isActive;
     }
 
     public LocalDateTime getCreatedAt() {
-        return created_at;
+        return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
     public LocalDateTime getUpdatedAt() {
-        return updated_at;
+        return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updated_at) {
-        this.updated_at = updated_at;
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

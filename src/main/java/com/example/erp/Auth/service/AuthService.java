@@ -32,14 +32,12 @@ public class AuthService {
 
         User user = authRepository.findByEmail(req.getEmail()).orElseThrow(() ->
 
-        new NoSuchElementException("Email Not Found")
+        new NoSuchElementException("Email or Password Invalid")
 
         );
 
-        if (!user.getPassword().equals(req.getPassword())) {
-
+        if (!passwordEncoder.matches(req.getPassword(), user.getPassword())) {
             throw new NoSuchElementException("Email or Password Invalid");
-
         }
 
         String token = jwtutils.generateToken(user);
@@ -70,14 +68,12 @@ public class AuthService {
                 !data.getUserId().isBlank() && data.getUsername() != null &&
                 !data.getUsername().isBlank();
 
-
-
-        if(!allFildHaveData){
+        if (!allFildHaveData) {
             throw new NoSuchElementException("All fields must have data");
-        }   
-        
+        }
+
         String hashpassword = passwordEncoder.encode(data.getPassword());
-        
+
         User user = new User();
 
         LocalDateTime now = LocalDateTime.now();
@@ -92,8 +88,6 @@ public class AuthService {
         user.setRoleId(data.getRoleId());
         user.setSalary(data.getSalary());
         user.setIsActive(true);
-
-
 
         user.setHireDate(now);
         user.setCreatedAt(now);

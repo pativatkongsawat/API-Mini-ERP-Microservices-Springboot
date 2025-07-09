@@ -49,4 +49,7 @@ public class Product {
     public LocalDateTime getCrateAt(){return created_at;}
     public void setCreateAt(LocalDateTime created_at){this.created_at = created_at;}
 
+    public Integer getCategoryID(){return category_id;}
+    public void setCategoryID(Integer category_id){this.category_id =category_id;}
+
 }

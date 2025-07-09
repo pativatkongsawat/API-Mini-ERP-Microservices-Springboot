@@ -55,14 +55,14 @@ public class UserService {
         data.setUsername(user.getUsername());
         data.setEmail(user.getEmail());
         data.setPassword(hashpassword);
-        data.setFname(user.getFname());
-        data.setLname(user.getLname());
+        data.setFirstName(user.getFname());
+        data.setLastName(user.getLname());
         data.setDepartmentId(user.getDepartmentId());
         data.setRoleId(user.getRoleId());
         data.setSalary(user.getSalary());
 
         data.setHireDate(now);
-        data.setIsActive(true);
+        data.setActive(true);
         data.setCreatedAt(now);
         data.setUpdatedAt(now);
 
@@ -88,10 +88,10 @@ public class UserService {
                 data.setEmail(user.getEmail());
             }
             if (user.getFname() != null && !user.getFname().isBlank()) {
-                data.setFname(user.getFname());
+                data.setFirstName(user.getFname());
             }
             if (user.getLname() != null && !user.getLname().isBlank()) {
-                data.setLname(user.getLname());
+                data.setLastName(user.getLname());
             }
             if (user.getPassword() != null && !user.getPassword().isBlank()) {
                 String hashpassword = passwordEncoder.encode(user.getPassword());
@@ -128,7 +128,7 @@ public class UserService {
 
     public Optional<User> SoftDeleteUser(Integer id) {
         return userRepository.findById(id).map(data -> {
-            data.setIsActive(false);
+            data.setActive(false);
             data.setUpdatedAt(LocalDateTime.now());
             return userRepository.save(data);
         }).or(() -> {

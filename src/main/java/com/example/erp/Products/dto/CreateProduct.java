@@ -9,6 +9,8 @@ public class CreateProduct {
     private Integer stock;
 
     private Double price;
+    
+    private Integer category_id;
 
     public CreateProduct(){}
 
@@ -23,6 +25,9 @@ public class CreateProduct {
 
     public Double getPrice(){return price;}
     public void setPrice(Double price){this.price = price;}
+
+    public Integer getCategoryID(){return category_id;}
+    public void setCategoryID(Integer category_id){this.category_id =category_id;}
 
 
 }
