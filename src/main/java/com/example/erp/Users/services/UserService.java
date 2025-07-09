@@ -2,6 +2,7 @@ package com.example.erp.Users.services;
 
 import java.util.NoSuchElementException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,7 +33,7 @@ public class UserService {
     }
 
     public User CreateNewUser(CreateUser user) {
-        
+
         boolean allFieldsHaveData = user.getEmail() != null && !user.getEmail().isBlank() &&
                 user.getFname() != null && !user.getFname().isBlank() &&
                 user.getLname() != null && !user.getLname().isBlank() &&
@@ -134,5 +135,52 @@ public class UserService {
         }).or(() -> {
             throw new NoSuchElementException("User not found with id: " + id);
         });
+    }
+
+    public List<User> CreateProductArray(List<CreateUser> data) {
+
+        LocalDateTime now = LocalDateTime.now();
+
+        List<User> users = new ArrayList<>();
+
+        for (CreateUser newUser : data) {
+
+            boolean allFieldsHaveData = newUser.getEmail() != null && !newUser.getEmail().isBlank() &&
+                    newUser.getFname() != null && !newUser.getFname().isBlank() &&
+                    newUser.getLname() != null && !newUser.getLname().isBlank() &&
+                    newUser.getPassword() != null && !newUser.getPassword().isBlank() &&
+                    newUser.getUsername() != null && !newUser.getUsername().isBlank() &&
+                    newUser.getRoleId() != null &&
+                    newUser.getDepartmentId() != null &&
+                    newUser.getSalary() != null;
+
+            if (!allFieldsHaveData) {
+                throw new IllegalArgumentException("All fields must have data");
+            }
+
+            String hashpassword = passwordEncoder.encode(newUser.getPassword());
+
+            User user = new User();
+            user.setUserId(newUser.getUserId());
+            user.setUsername(newUser.getUsername());
+            user.setEmail(newUser.getEmail());
+            user.setPassword(hashpassword);
+            user.setFirstName(newUser.getFname());
+            user.setLastName(newUser.getLname());
+            user.setDepartmentId(newUser.getDepartmentId());
+            user.setRoleId(newUser.getRoleId());
+            user.setSalary(newUser.getSalary());
+
+            user.setHireDate(now);
+            user.setActive(true);
+            user.setCreatedAt(now);
+            user.setUpdatedAt(now);
+
+            users.add(user);
+
+        }
+
+        return userRepository.saveAll(users);
+
     }
 }
