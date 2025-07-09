@@ -36,4 +36,20 @@ public class Log {
     public Integer getUserID(){return user_id;}
     public void setUserID(Integer user_id){this.user_id = user_id;}
 
+    public String getAction(){return action;}
+    public void setAction(String action){this.action = action;}
+
+
+    public String getDescription(){return description;}
+    public void setDescription(String description ){this.description = description;}
+
+    public String getIpAddress(){return ip_address;}
+    public void setIpAddress(String ip_address){this.ip_address = ip_address;}
+
+    public String getUserAgent(){return user_agent;}
+    public void setUserAgent(String user_agent){this.user_agent = user_agent;}
+
+    public LocalDateTime getCreateAt(){return created_at;}
+    public void setCreateAt(LocalDateTime created_at){this.created_at = created_at;}
+
 }
