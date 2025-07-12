@@ -1,10 +1,11 @@
 package com.example.erp.Config.auth;
 
-import com.example.erp.Users.model.User;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
+
+import com.example.erp.src.Users.model.User;
 
 import java.security.Key;
 import java.util.Date;

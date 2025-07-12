@@ -10,8 +10,8 @@ import com.example.erp.Auth.model.AuthRequest;
 import com.example.erp.Auth.model.AuthResponse;
 import com.example.erp.Auth.service.AuthService;
 import com.example.erp.Helper.ApiResponse;
-import com.example.erp.Users.dto.CreateUser;
-import com.example.erp.Users.model.User;
+import com.example.erp.src.Users.dto.CreateUser;
+import com.example.erp.src.Users.model.User;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 

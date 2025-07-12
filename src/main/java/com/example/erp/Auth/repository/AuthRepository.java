@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.erp.Users.model.User;
+import com.example.erp.src.Users.model.User;
 
 
 
