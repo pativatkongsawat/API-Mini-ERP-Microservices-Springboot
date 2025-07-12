@@ -1,9 +1,9 @@
-package com.example.erp.log.service;
+package com.example.erp.Log.service;
 
 import java.time.LocalDateTime;
 
-import com.example.erp.log.model.Log;
-import com.example.erp.log.repository.LogRepository;
+import com.example.erp.Log.model.Log;
+import com.example.erp.Log.repository.LogRepository;
 
 public class LogService {
 
@@ -31,4 +31,5 @@ public class LogService {
 
         return logRepository.save(log);
     }
+    
 }

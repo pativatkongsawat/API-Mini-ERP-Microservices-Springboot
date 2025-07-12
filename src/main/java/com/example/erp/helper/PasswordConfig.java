@@ -1,4 +1,4 @@
-package com.example.erp.helper;
+package com.example.erp.Helper;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

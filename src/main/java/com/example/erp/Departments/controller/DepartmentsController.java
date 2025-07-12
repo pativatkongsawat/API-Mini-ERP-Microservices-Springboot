@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.erp.Departments.dto.CreateDepartments;
 import com.example.erp.Departments.model.Departments;
 import com.example.erp.Departments.service.DepartmentsService;
-import com.example.erp.helper.ApiResponse;
+import com.example.erp.Helper.ApiResponse;
 
 import jakarta.validation.Valid;
 

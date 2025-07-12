@@ -1,4 +1,4 @@
-package com.example.erp.helper;  // เปลี่ยน package ตามโปรเจกต์คุณ
+package com.example.erp.Helper;  
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

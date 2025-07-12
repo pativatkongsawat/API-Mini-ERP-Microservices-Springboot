@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 import com.example.erp.Auth.model.AuthRequest;
 import com.example.erp.Auth.model.AuthResponse;
 import com.example.erp.Auth.repository.AuthRepository;
+import com.example.erp.Config.auth.AuthConfig;
 import com.example.erp.Users.dto.CreateUser;
 import com.example.erp.Users.model.User;
-import com.example.erp.config.auth.AuthConfig;
 
 @Service
 public class AuthService {

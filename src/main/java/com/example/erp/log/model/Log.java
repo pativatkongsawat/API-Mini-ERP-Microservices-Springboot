@@ -1,4 +1,4 @@
-package com.example.erp.log.model;
+package com.example.erp.Log.model;
 
 import java.time.LocalDateTime;
 

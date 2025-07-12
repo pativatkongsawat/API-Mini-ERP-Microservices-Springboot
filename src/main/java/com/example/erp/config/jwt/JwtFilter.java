@@ -1,4 +1,4 @@
-package com.example.erp.config.jwt;
+package com.example.erp.Config.jwt;
 
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
@@ -14,7 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.example.erp.config.auth.AuthConfig;
+import com.example.erp.Config.auth.AuthConfig;
 
 import java.io.IOException;
 import java.util.List;

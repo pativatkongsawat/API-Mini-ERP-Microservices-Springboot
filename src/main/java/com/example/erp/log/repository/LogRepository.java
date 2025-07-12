@@ -1,8 +1,8 @@
-package com.example.erp.log.repository;
+package com.example.erp.Log.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.erp.log.model.Log;
+import com.example.erp.Log.model.Log;
 
 public interface LogRepository extends JpaRepository<Log , Integer> {
     

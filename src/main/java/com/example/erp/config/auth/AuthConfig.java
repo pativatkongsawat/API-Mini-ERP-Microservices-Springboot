@@ -1,4 +1,4 @@
-package com.example.erp.config.auth;
+package com.example.erp.Config.auth;
 
 import com.example.erp.Users.model.User;
 import io.jsonwebtoken.*;

@@ -1,4 +1,4 @@
-package com.example.erp.config.security;
+package com.example.erp.Config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,7 +8,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.example.erp.config.jwt.JwtFilter;
+import com.example.erp.Config.jwt.JwtFilter;
 
 @Configuration
 public class SecurityConfig {
