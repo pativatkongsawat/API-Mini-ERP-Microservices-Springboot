@@ -1,4 +1,4 @@
-package com.example.erp.Attendance.model;
+package com.example.erp.src.Attendance.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -9,4 +9,6 @@ public class AttendanceStatus {
 
     private Integer status_id;
     private String status_name;
+
+    public AttendanceStatus(){}
 }

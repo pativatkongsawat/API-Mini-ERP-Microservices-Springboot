@@ -1,4 +1,4 @@
-package com.example.erp.Attendance.model;
+package com.example.erp.src.Attendance.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -11,5 +11,7 @@ public class Attendance {
     private LocalDateTime check_out;
     private LocalDate work_date; 
     private Integer status_id;
+
+    public Attendance(){}
     
 }

@@ -1,4 +1,4 @@
-package com.example.erp.Attendance.repository;
+package com.example.erp.src.Attendance.repository;
 
 public interface AttendanceStatusRepository {
 

@@ -96,4 +96,15 @@ public class UserController {
 
     }
 
+    @PostMapping("/a")
+    public ResponseEntity<ApiResponse<List<User>>> CreateArrayUser(@RequestBody List<CreateUser> data){
+
+        List<User> user = userService.CreateUserArray(data);
+
+        ApiResponse<List<User>> res = new ApiResponse<>("201" , "Create User Success" , user);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(res);
+        
+    }
+
 }

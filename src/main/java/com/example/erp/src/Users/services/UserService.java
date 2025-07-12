@@ -137,7 +137,7 @@ public class UserService {
         });
     }
 
-    public List<User> CreateProductArray(List<CreateUser> data) {
+    public List<User> CreateUserArray(List<CreateUser> data) {
 
         LocalDateTime now = LocalDateTime.now();
 
