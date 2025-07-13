@@ -3,38 +3,70 @@ package com.example.erp.src.Attendance.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "attendance")
 public class Attendance {
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private Integer attendance_id;
-   
-    private Integer user_id;
-    private LocalDateTime check_in;
-    private LocalDateTime check_out;
-    private LocalDate work_date; 
-    private Integer status_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "attendance_id")
+    private Integer attendanceId;
 
-    public Attendance(){}
+    @Column(name = "user_id")
+    private Integer userId;
 
-    public Integer getUserID(){return user_id;}
-    public void setUserID(Integer user_id){this.user_id = user_id;}
+    @Column(name = "check_in")
+    private LocalDateTime checkIn;
 
+    @Column(name = "check_out")
+    private LocalDateTime checkOut;
 
-    public LocalDateTime getCheckIn(){return check_in;}
-    public void setChenckIn(LocalDateTime check_in){this.check_in = check_in;}
+    @Column(name = "work_date")
+    private LocalDate workDate;
 
-    public LocalDateTime getCheckOut(){return check_out;}
-    public void setCheckOut(LocalDateTime check_out){this.check_out = check_out;}
+    @Column(name = "status_id")
+    private Integer statusId;
 
-    public LocalDate setWorkDate(){return work_date;}
-    public void setWorkDate(LocalDate work_date){this.work_date = work_date;}
+    public Attendance() {}
 
-    public Integer getStatusID(){return status_id;}
-    public void setStatusID(Integer status_id){this.status_id = status_id;}
-    
+    public Integer getAttendanceId() {
+        return attendanceId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public LocalDateTime getCheckIn() {
+        return checkIn;
+    }
+    public void setCheckIn(LocalDateTime checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public LocalDateTime getCheckOut() {
+        return checkOut;
+    }
+    public void setCheckOut(LocalDateTime checkOut) {
+        this.checkOut = checkOut;
+    }
+
+    public LocalDate getWorkDate() {
+        return workDate;
+    }
+    public void setWorkDate(LocalDate workDate) {
+        this.workDate = workDate;
+    }
+
+    public Integer getStatusId() {
+        return statusId;
+    }
+    public void setStatusId(Integer statusId) {
+        this.statusId = statusId;
+    }
 }
