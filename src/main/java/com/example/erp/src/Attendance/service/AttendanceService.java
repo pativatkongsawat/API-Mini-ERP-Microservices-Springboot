@@ -86,4 +86,29 @@ public class AttendanceService {
 
     }
 
+    public Attendance CreateCheckOut(CreateAttendance data, HttpServletRequest request) {
+        String authHeader = request.getHeader("Authorization");
+
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            throw new RuntimeException("Authorization header missing or invalid");
+        }
+
+        String token = authHeader.substring(7);
+        Claims claims = jwtUtil.extractAllClaims(token);
+        Integer userId = claims.get("userId", Integer.class);
+
+        LocalDate today = LocalDate.now();
+        LocalDateTime now = LocalDateTime.now();
+
+       
+        Attendance attendance = attendanceRepository
+                .findByUserIdAndWorkDateAndCheckOutIsNull(userId, today)
+                .orElseThrow(() -> new RuntimeException("Check-in not found for today"));
+
+       
+        attendance.setCheckOut(now);
+
+        return attendanceRepository.save(attendance);
+    }
+
 }
