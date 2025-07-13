@@ -48,10 +48,10 @@ public class JwtFilter extends OncePerRequestFilter {
 
         String email = jwtUtil.extractEmail(token);
         Claims claims = jwtUtil.extractAllClaims(token);
-        int permissionId = (int) claims.get("permissionId");
+        int roleId = (int) claims.get("roleId");
 
         List<GrantedAuthority> authorities = List.of(
-                new SimpleGrantedAuthority("PERMISSION_" + permissionId)
+                new SimpleGrantedAuthority("PERMISSION_" + roleId)
         );
 
         UsernamePasswordAuthenticationToken auth =
