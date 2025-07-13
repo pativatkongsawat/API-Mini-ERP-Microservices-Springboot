@@ -25,7 +25,7 @@ public class AuthConfig {
     public String generateToken(User user) {
         return Jwts.builder()
                 .setSubject(user.getEmail()) 
-                .claim("userId", user.getUserId()) 
+                .claim("userId", user.getId()) 
                 .claim("email", user.getEmail())
                 .claim("roleId", user.getRoleId())
                 .claim("department", user.getDepartmentId())
