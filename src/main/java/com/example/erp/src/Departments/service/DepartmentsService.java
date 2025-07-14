@@ -1,6 +1,7 @@
 package com.example.erp.src.Departments.service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -34,7 +35,9 @@ public class DepartmentsService {
     }
 
     public Optional<Departments> getDepartById(Integer id) {
-        return departmentsRepository.findById(id);
+        return departmentsRepository.findById(id).or(() ->{
+            throw new  NoSuchElementException("Not Found This Id");
+        });
     }
 
 }
