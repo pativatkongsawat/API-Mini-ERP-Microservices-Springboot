@@ -30,7 +30,7 @@ public class ProductController {
         this.productService = productService;
     }
 
-    
+    @GetMapping("/all")
     public List<Product> GetAll() {
         return productService.GetAll();
     }
@@ -72,7 +72,7 @@ public class ProductController {
     }
 
 
-    @PostMapping("/a")
+    @PostMapping("/array")
     public ResponseEntity<ApiResponse<List<Product>>> CreateProductArray(@RequestBody List<CreateProduct> data){
 
         List<Product> products = productService.CreateProductArray(data);
