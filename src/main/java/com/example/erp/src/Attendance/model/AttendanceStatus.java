@@ -1,5 +1,6 @@
 package com.example.erp.src.Attendance.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,16 +13,19 @@ public class AttendanceStatus {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private Integer status_id;
-    private String status_name;
+    @Column(name = "status_id")
+    private Integer statusId;
+
+    @Column(name = "status_name")
+    private String statusName;
 
     public AttendanceStatus(){}
 
-    public Integer getStatusId(){return status_id;}
-    public void setStatusId(Integer status_id){this.status_id = status_id;}
+    public Integer getStatusId(){return statusId ;}
+    public void setStatusId(Integer statusId){this.statusId = statusId;}
 
-    public String getStatusName(){return status_name;}
-    public void setStatusName(String status_name){this.status_name = status_name;}
+    public String getStatusName(){return statusName;}
+    public void setStatusName(String statusName){this.statusName = statusName;}
 
     
 }

@@ -1,22 +1,30 @@
 package com.example.erp.src.Category.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "categories")
 public class Category {
 
-    private Integer category_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "category_id")
+    private Integer categoryId;
 
-    private String category_name;
+    @Column(name = "category_name")
+    private String categoryName;
 
     public Category(){}
 
-    public Integer getCategoryId(){return category_id;}
-    public void setCategoryID(Integer category_id){this.category_id =category_id;}
+    public Integer getCategoryId(){return categoryId;}
+    public void setCategoryID(Integer categoryId){this.categoryId =categoryId;}
 
-    public String getCategoryName(){return category_name;}
-    public void setCategoryName(String category_name){this.category_name =category_name;}
+    public String getCategoryName(){return categoryName;}
+    public void setCategoryName(String categoryName){this.categoryName =categoryName;}
     
 }
