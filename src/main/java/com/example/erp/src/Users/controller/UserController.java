@@ -85,7 +85,7 @@ public class UserController {
 
     }
 
-    @PutMapping("/s")
+    @PutMapping("/soft")
     public ResponseEntity<ApiResponse<User>> SoftDeleteUser(@RequestParam Integer id) {
 
         Optional<User> user = userService.SoftDeleteUser(id);
@@ -96,7 +96,7 @@ public class UserController {
 
     }
 
-    @PostMapping("/a")
+    @PostMapping("/array")
     public ResponseEntity<ApiResponse<List<User>>> CreateArrayUser(@RequestBody List<CreateUser> data){
 
         List<User> user = userService.CreateUserArray(data);
