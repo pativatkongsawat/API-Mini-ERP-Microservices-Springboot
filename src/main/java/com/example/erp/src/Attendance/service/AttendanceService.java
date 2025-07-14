@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
 
 import com.example.erp.Config.auth.AuthConfig;
 import com.example.erp.src.Attendance.dto.CreateAttendance;
@@ -19,6 +20,7 @@ import com.example.erp.src.Attendance.dto.CreateAttendanceStatus;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.HttpServletRequest;
 
+@Service
 public class AttendanceService {
 
     private final AttendanceRepository attendanceRepository;
