@@ -93,7 +93,7 @@ public class AttendanceService {
 
     }
 
-    public Attendance CreateCheckOut(CreateAttendance data, HttpServletRequest request) {
+    public Attendance CreateCheckOut(HttpServletRequest request) {
         String authHeader = request.getHeader("Authorization");
 
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
@@ -133,6 +133,10 @@ public class AttendanceService {
             return true;
         }).orElseThrow(() -> new NoSuchElementException("Not Found this ID"));
 
+    }
+
+    public List<Attendance> getAllAttendance(){
+        return attendanceRepository.findAll();
     }
 
 }
