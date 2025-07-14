@@ -18,7 +18,7 @@ public class AttendanceStatus {
     public AttendanceStatus(){}
 
     public Integer getStatusId(){return status_id;}
-    public void setStatusIdZ(Integer status_id){this.status_id = status_id;}
+    public void setStatusId(Integer status_id){this.status_id = status_id;}
 
     public String getStatusName(){return status_name;}
     public void setStatusName(String status_name){this.status_name = status_name;}

@@ -3,16 +3,19 @@ package com.example.erp.src.Attendance.service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.scheduling.annotation.Scheduled;
 
 import com.example.erp.Config.auth.AuthConfig;
 import com.example.erp.src.Attendance.dto.CreateAttendance;
 import com.example.erp.src.Attendance.model.Attendance;
+import com.example.erp.src.Attendance.model.AttendanceStatus;
 import com.example.erp.src.Attendance.repository.AttendanceRepository;
+import com.example.erp.src.Attendance.repository.AttendanceStatusRepository;
 import com.example.erp.src.Users.model.User;
 import com.example.erp.src.Users.repository.UserRepository;
-
+import com.example.erp.src.Attendance.dto.CreateAttendanceStatus;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -21,12 +24,14 @@ public class AttendanceService {
     private final AttendanceRepository attendanceRepository;
     private final AuthConfig jwtUtil;
     private final UserRepository userRepository;
+    private final AttendanceStatusRepository attendanceStatusRepository;
 
     public AttendanceService(AttendanceRepository attendanceRepository, AuthConfig jwtUtil,
-            UserRepository userRepository) {
+            UserRepository userRepository, AttendanceStatusRepository attendanceStatusRepository) {
         this.attendanceRepository = attendanceRepository;
         this.jwtUtil = jwtUtil;
         this.userRepository = userRepository;
+        this.attendanceStatusRepository = attendanceStatusRepository;
 
     }
 
@@ -100,15 +105,32 @@ public class AttendanceService {
         LocalDate today = LocalDate.now();
         LocalDateTime now = LocalDateTime.now();
 
-       
         Attendance attendance = attendanceRepository
                 .findByUserIdAndWorkDateAndCheckOutIsNull(userId, today)
                 .orElseThrow(() -> new RuntimeException("Check-in not found for today"));
 
-       
         attendance.setCheckOut(now);
 
         return attendanceRepository.save(attendance);
+    }
+
+    public AttendanceStatus CreateAttendanceStatus(CreateAttendanceStatus data) {
+
+        AttendanceStatus status = new AttendanceStatus();
+
+        status.setStatusName(data.getStatusName());
+
+        return attendanceStatusRepository.save(status);
+
+    }
+
+    public boolean DeleteAttendanceStatus(Integer id) {
+
+        return attendanceStatusRepository.findById(id).map(data -> {
+            attendanceStatusRepository.delete(data);
+            return true;
+        }).orElseThrow(() -> new NoSuchElementException("Not Found this ID"));
+
     }
 
 }
