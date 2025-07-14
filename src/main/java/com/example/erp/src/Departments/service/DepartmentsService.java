@@ -35,9 +35,14 @@ public class DepartmentsService {
     }
 
     public Optional<Departments> getDepartById(Integer id) {
-        return departmentsRepository.findById(id).or(() ->{
-            throw new  NoSuchElementException("Not Found This Id");
-        });
+        return departmentsRepository.findById(id);
+    }
+
+    public boolean deleteDeaprt(Integer id){
+        return departmentsRepository.findById(id).map(data -> {
+            departmentsRepository.delete(data);
+            return true;
+        }).orElseThrow(() -> new NoSuchElementException("Not Found this ID"));
     }
 
 }
