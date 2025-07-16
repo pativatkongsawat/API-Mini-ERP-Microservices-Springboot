@@ -21,7 +21,7 @@ import com.example.erp.src.Departments.service.DepartmentsService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/dp")
+@RequestMapping("/api/department")
 public class DepartmentsController {
 
     private final DepartmentsService departmentsService;
