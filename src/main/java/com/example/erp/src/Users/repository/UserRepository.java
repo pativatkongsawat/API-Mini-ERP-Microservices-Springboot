@@ -23,7 +23,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
         String firstName, String lastName, Integer departmentId, Pageable pageable
     );
 
-    List<User> findByActive(boolean active);
+    
 
     
 
