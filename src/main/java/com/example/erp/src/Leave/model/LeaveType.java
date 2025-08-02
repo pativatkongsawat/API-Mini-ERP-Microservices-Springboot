@@ -19,4 +19,10 @@ public class LeaveType {
     @Column(name = "leave_type_name")
     private String leaveTypeName;
 
+    public Integer getLeaveTypeId(){return leaveTypeId;}
+    public void setLeaveTypeId(Integer leaveTypeId){this.leaveTypeId = leaveTypeId;}
+
+    public String getLeaveTypeName(){return leaveTypeName;}
+    public void setLeaveTypeName(String leaveTypeName){this.leaveTypeName = leaveTypeName;}
+
 }

@@ -20,4 +20,12 @@ public class LeaveStatus {
     @Column(name = "leave_status_name")
     private String leaveStatusName;
 
+    public LeaveStatus(){}
+
+    public Integer getStatusId(){return leaveStatusId;}
+    public void  setStatusId(Integer leaveStatusId ){this.leaveStatusId = leaveStatusId;}
+
+    public String getStatusName(){return leaveStatusName;}
+    public void setStatusName(String leaveStatusName){this.leaveStatusName = leaveStatusName;}
+
 }
